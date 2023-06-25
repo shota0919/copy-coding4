@@ -1,108 +1,352 @@
-header{
-    font-size:15px;
+
+body{
+  margin: 0;
+
 }
 
-.page-tittle{
-  font-size: 20px;
-  font-weight: normal;
+/* ヘッダー */
+
+#header{
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
-.drawer_hidden{
-    display: none;
-}
-
-.drawer_open {
-    display: flex;
-    height: 60px;
-    width: 60px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 100;/* 重なり順を一番上にする */
-    cursor: pointer;
-  }
-
-  .drawer_open span,
-.drawer_open span:before,
-.drawer_open span:after {
-  content: '';
+.site-title >a{
+  width: 180px;
+  line-height: 1px;
   display: block;
-  height: 3px;
-  width: 25px;
-  border-radius: 3px;
-  background: #333;
-  transition: 0.5s;
-  position: absolute;
+  font-size: 20px;
 }
 
-.drawer_open span:before {
-    bottom: 8px;
-  }
+#nav{
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  color: #fff;
+  padding: 36px 50px;
+  transition: all 0.5s;
+  z-index: 20;
+  opacity: 0;
+}
 
-  /* 三本線の一番下の棒の位置調整 */
-.drawer_open span:after {
-    top: 8px;
-  }
-  
-  /* アイコンがクリックされたら真ん中の線を透明にする */
-  #drawer_input:checked ~ .drawer_open span {
-    background: rgba(255, 255, 255, 0);
-  }
-  
-  /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
-  #drawer_input:checked ~ .drawer_open span::before {
-    bottom: 0;
-    transform: rotate(45deg);
-  }
-  
-  #drawer_input:checked ~ .drawer_open span::after {
-    top: 0;
-    transform: rotate(-45deg);
-  }
-    
-  /* メニューのデザイン*/
-  .nav_content {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 100%; /* メニューを画面の外に飛ばす */
-    z-index: 99;
-    background: #fff;
-    transition: .5s;
-  }
-  
-  /* メニュー黒ポチを消す */
-  .nav_list {
-    list-style: none;
-  }
-  
-  /* アイコンがクリックされたらメニューを表示 */
-  #drawer_input:checked ~ .nav_content {
-    left: 0;/* メニューを画面に入れる */
-  }
+#nav >li{
+  margin-bottom: 14px;
+}
 
-  /* インデックスメインぺージ */
-  li{
-    list-style: none;
+.double-line{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  transition: all 0.5s;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.double-line > span:nth-child(1){
+  top: 10px;
+}
+
+.double-line > span:nth-child(2){
+   bottom: 10px;
+}
+
+.double-line > span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 4px;
+  transition: all 0.5s;
+}
+
+.open .double-line span {
+  background-color: #fff;
+}
+/*
+1本目の線を-45度回転
+*/
+.open .double-line span:nth-child(1) {
+  -webkit-transform: translateY(4px) rotate(-45deg);
+  transform: translateY(4px) rotate(-45deg);
+}
+/*
+2本目の線を45度回転
+*/
+.open .double-line span:nth-child(2) {
+  -webkit-transform: translateY(-4px) rotate(45deg);
+  transform: translateY(-4px) rotate(45deg);
+}
+
+#mask {
+    display: none;
+    transition: all 0.5s;
+}
+
+/* ハンバーガー */
+
+  /* ラッパー */
+.wrapper {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 40px;
   }
   
+#top{
+  padding-top: 80px;
+  padding-bottom: 160px;
+}
+
+
+
+
  
-  
-  .product-introduction{
+/* インデックス */
+  .product-list{
     display: flex;
-    flex-wrap:wrap;
-    /* justify-content: center;  */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
-  .item{
-    width:15%;
+  .product-list >li{
+    width: 23%;
+    margin-bottom: 40px;
   }
 
+  .produbct-list >li >img{
+    margin-bottom: 10px;
+  }
+
+  .product-list p {
+    font-size: 0.75rem;
+}
+
+/* リンク */
+
+.link-text {
+  display: block;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.pagination li {
+  padding: 0 20px;
+}
+
+/* フッター */
+
+
+#footer{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+}
+
+.menu {
+  display: flex;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+}
+
+.menu li {
+    font-size: 0.75rem;
+    margin-right: 30px;
+}
+
+#footer .copyright {
+  font-size: 0.625rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* 共通css */
+  a{
+    color: #333;
+    text-decoration: none;
+  }
+
+  img{
+    width: 100%;
+  }
+
+  li {
+    list-style: none;
+  }
+
+ /* プロダクト */
+
+ /* アイテム */
+
+ #item {   
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+
+}
+.item-text {
+  width: 42%;
+}
+
+.item-img {
+  width: 50%;
+}
+
+.item-text p {
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.item-text >dl{
+  display: flex;
+  flex-wrap: wrap;
+}
+.item-text > dl >dt{
+  width: 30%;
+}
+
+.item-text > dl >dd {
+  margin: 0;
+}
+ 
   /* アバウト */
 
-
+.content{
+  padding: 120px;
+  padding-bottom: 160px;
+}
   
+.page-tittle{
+  font-size: 0.875rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+#about {
+    max-width: 600px;
+}
+
+#about p {
+  line-height: 1.9;
+  margin-bottom: 30px;
+}
+
+/* カンパニー */
+
+/* :before,:after {
+  box-sizing: inherit;
+} */
+
+
+
+#company{
+  max-width: 600px;
+}
+
+.info{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#company dt {
+  width: 30%;
+  border-bottom: solid 1px #dcdbdb;
+  padding: 20px 10px;
+}
+
+#company dd {
+  width: 70%;
+  border-bottom: solid 1px #dcdbdb;
+  padding: 20px 10px;
+  margin-left: 0;
+}
+
+
+
+#company dt:last-of-type {
+  border-bottom: none;
+}
+
+#company dd:last-of-type {
+  border-bottom: none;
+}
+#company .map {
+  filter: grayscale(1);
+}
+
+#company .map iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
+@media screen and (max-width: 900px) {
+
+  .product-list >li{
+    width:47%;
+  }
+
+  /* アイテム */
+
+  #item {
+    flex-direction: column;
+  }
+  #item .item-text {
+    width: 100%;
+  }
+  #item .item-img {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  /* カンパニー */
+
+  #company dl {
+    flex-direction: column;
+  }
+  #company dt {
+    width: 100%;
+    border-bottom: none;
+    padding-bottom: 5px;
+  }
+  #company dd {
+    width: 100%;
+    padding-top: 5px;
+  }
+
+  /* フッター */
+
+  #footer {
+    flex-direction: column;
+  }
+  .menu {
+    margin-bottom: 5px;
+  }
+
+}
+
 
   
 
